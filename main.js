@@ -37,14 +37,17 @@ const pAequorFactory = (specimenNum, dna) => {
     },
 compareDNA(arrayCompare) {
       let commonDNA = [];
+      let commonDNAIndex = [];
       for (let i = 0; i < this.dna.length; i++) {
-        for (let j = 0; j < arrayCompare.dna.length; j++ )
-          if (/*this.dna.indexOf(this[i]) === arrayCompare.dna.indexOf(this[j]) &&*/ this.dna[i] === arrayCompare.dna[j]) {
+          if (this.dna[i] === arrayCompare.dna[i]) {
             commonDNA.push(this.dna[i]);
+            commonDNAIndex.push(i);
         }
       }
     let percentageDNA = (commonDNA.length/15) * 100;
-    console.log(commonDNA);
+    console.log('Specimen ' + this.specimenNum + ' and Specimen ' + arrayCompare.specimenNum +
+    ' have ' + percentageDNA.toFixed(2) + '% DNA in common (' + commonDNA.length + ' bases)');
+    console.log('The Dna is shared at position/s: ' + commonDNAIndex.join(', ') + ' and the common DNA bases are: ' + commonDNA.join(', '));
     }
   }
 };
